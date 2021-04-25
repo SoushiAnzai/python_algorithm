@@ -19,28 +19,51 @@ def insertion_sort(numbers: List[int]) -> List[int]:
     return numbers
 
 
+# def bucket_sort(numbers: List[int]) -> List[int]:
+#     max_num = max(numbers)
+#     len_numbers = len(numbers)
+#     size = max_num // len_numbers
+
+#     buckets = [[] for _ in range(size)]
+#     for num in numbers:
+#         i = num // size
+#         if i != size:
+#             buckets[i].append(num)
+#         else:
+#             buckets[size-1].append(num)
+
+#     for i in range(size):
+#         insertion_sort(buckets[i])
+
+#     result = []
+#     for i in range(size):
+#         result += buckets[i]
+
+#     return result
+
 def bucket_sort(numbers: List[int]) -> List[int]:
     max_num = max(numbers)
     len_numbers = len(numbers)
     size = max_num // len_numbers
 
+    # リストをsize分生成する
     buckets = [[] for _ in range(size)]
+    # 各リストに数値を入れていく
     for num in numbers:
         i = num // size
         if i != size:
             buckets[i].append(num)
         else:
-            buckets[size-1].append(num)
-
+            buckets[i-1].append(num)
+    # 各リストをソートする
     for i in range(size):
         insertion_sort(buckets[i])
-
+    # 各リストを結合する
     result = []
     for i in range(size):
         result += buckets[i]
-
+    
     return result
-
 
 if __name__ == '__main__':
     import random
