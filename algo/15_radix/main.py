@@ -21,7 +21,6 @@ def counting_sort(numbers: List[int], place: int) -> List[int]:
 
     return result
 
-
 def radix_sort(numbers: List[int]) -> List[int]:
     max_num = max(numbers)
     place = 1
@@ -29,6 +28,14 @@ def radix_sort(numbers: List[int]) -> List[int]:
         numbers = counting_sort(numbers, place)
         place *= 10
     return numbers
+
+# def radix_sort(numbers: List[int]) -> List[int]:
+#     max_num = max(numbers)
+#     place = 1
+#     while max_num > place:
+#         numbers = counting_sort(numbers, place)
+#         place *= 10
+#     return numbers
 
 
 if __name__ == '__main__':
